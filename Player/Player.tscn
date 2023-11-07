@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=3 uid="uid://c7tpr6humyosa"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_g1xa3"]
+[ext_resource type="PackedScene" uid="uid://b13x3oph30ct" path="res://tools/ToolWheel.tscn" id="2_iarfb"]
+[ext_resource type="PackedScene" uid="uid://dk1ckvi25quet" path="res://stamina_wheel.tscn" id="3_40rhn"]
+[ext_resource type="Texture2D" uid="uid://brnymyvpns0av" path="res://Icons/Axe.png" id="3_n7ksb"]
+[ext_resource type="Texture2D" uid="uid://dhnh887ldv60b" path="res://Icons/Stake.png" id="4_2ipws"]
+[ext_resource type="PackedScene" uid="uid://bflxr7ukmunvx" path="res://Menus/bag_menu.tscn" id="4_5c3m5"]
+[ext_resource type="Texture2D" uid="uid://b1xl5m24khcwr" path="res://Icons/Bow.png" id="5_37ept"]
+[ext_resource type="PackedScene" uid="uid://10nsebub0d2p" path="res://Player/player_status.tscn" id="5_vyshj"]
+[ext_resource type="Texture2D" uid="uid://dqk6tjnf8sygg" path="res://icon.svg" id="6_dxm0x"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nt8tp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_16qcy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1tm8l"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_g1xa3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_nt8tp")
+
+[node name="SurfaceDetector" type="RayCast3D" parent="MeshInstance3D"]
+target_position = Vector3(0, 0, -0.8)
+
+[node name="StillOnWall" type="RayCast3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, -0.8)
+
+[node name="ToolPosition" type="Node3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.96, 0, 0)
+
+[node name="ToolWheel" parent="MeshInstance3D/ToolPosition" instance=ExtResource("2_iarfb")]
+axe_slot_icon = ExtResource("3_n7ksb")
+stake_slot_icon = ExtResource("4_2ipws")
+bow_slot_icon = ExtResource("5_37ept")
+lighter_slot_icon = ExtResource("6_dxm0x")
+
+[node name="StickPointHolder" type="Marker3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="StickPoint" type="Marker3D" parent="MeshInstance3D/StickPointHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="StaminaWheel" parent="MeshInstance3D" instance=ExtResource("3_40rhn")]
+position = Vector2(721, 349)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_16qcy")
+
+[node name="Area3D" type="Area3D" parent="." groups=["Player"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_1tm8l")
+
+[node name="TwistPivot" type="Node3D" parent="."]
+
+[node name="PitchPivot" type="Node3D" parent="TwistPivot"]
+
+[node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.891007, 0.453991, 0, -0.453991, 0.891007, 0, 2.6, 3.35)
+
+[node name="BagMenu" parent="." instance=ExtResource("4_5c3m5")]
+visible = false
+
+[node name="PlayerStatus" parent="." instance=ExtResource("5_vyshj")]
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

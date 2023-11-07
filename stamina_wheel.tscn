@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk1ckvi25quet"]
+
+[ext_resource type="Script" path="res://StaminaWheel.gd" id="1_ljmqa"]
+
+[node name="StaminaWheel" type="Node2D"]
+visible = false
+script = ExtResource("1_ljmqa")

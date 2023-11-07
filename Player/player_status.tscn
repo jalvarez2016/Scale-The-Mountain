@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://10nsebub0d2p"]
+
+[ext_resource type="Script" path="res://Player/PlayerStatus.gd" id="1_ispjw"]
+[ext_resource type="Texture2D" uid="uid://ce3whtbgwdfyy" path="res://Icons/Heart.png" id="2_4i8pl"]
+
+[node name="PlayerStatus" type="Node2D"]
+script = ExtResource("1_ispjw")
+
+[node name="Heart-Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heart" type="Sprite2D" parent="Heart-Container"]
+position = Vector2(24, 24)
+texture = ExtResource("2_4i8pl")
+
+[node name="Heart2" type="Sprite2D" parent="Heart-Container"]
+position = Vector2(64, 24)
+texture = ExtResource("2_4i8pl")
+
+[node name="Heart3" type="Sprite2D" parent="Heart-Container"]
+position = Vector2(104, 24)
+texture = ExtResource("2_4i8pl")
+
+[node name="Heart4" type="Sprite2D" parent="Heart-Container"]
+position = Vector2(144, 24)
+texture = ExtResource("2_4i8pl")
+
+[node name="Heart5" type="Sprite2D" parent="Heart-Container"]
+position = Vector2(184, 24)
+texture = ExtResource("2_4i8pl")
+
+[node name="Heart6" type="Sprite2D" parent="Heart-Container"]
+position = Vector2(224, 24)
+texture = ExtResource("2_4i8pl")
+
+[node name="Heart7" type="Sprite2D" parent="Heart-Container"]
+position = Vector2(264, 24)
+texture = ExtResource("2_4i8pl")
+
+[node name="Heart8" type="Sprite2D" parent="Heart-Container"]
+position = Vector2(304, 24)
+texture = ExtResource("2_4i8pl")
+
+[node name="Heart9" type="Sprite2D" parent="Heart-Container"]
+position = Vector2(344, 24)
+texture = ExtResource("2_4i8pl")
+
+[node name="Heart10" type="Sprite2D" parent="Heart-Container"]
+position = Vector2(384, 24)
+texture = ExtResource("2_4i8pl")

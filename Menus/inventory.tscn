@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://ge2necax0i78"]
+
+[node name="Inventory" type="TabBar"]

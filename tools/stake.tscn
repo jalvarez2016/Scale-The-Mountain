@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dt5jrnq4bqmjc"]
+
+[ext_resource type="Script" path="res://tools/stake.gd" id="1_swg4w"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jsn1s"]
+top_radius = 0.3
+bottom_radius = 0.08
+height = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_twiv7"]
+radius = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_d7kra"]
+radius = 0.1
+height = 0.2
+
+[node name="Stake" type="Node3D" groups=["stake"]]
+script = ExtResource("1_swg4w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_jsn1s")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_twiv7")
+
+[node name="cling_position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.690775, 0.615051)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="cling_position"]
+mesh = SubResource("SphereMesh_d7kra")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

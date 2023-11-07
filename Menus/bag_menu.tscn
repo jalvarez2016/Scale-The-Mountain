@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bflxr7ukmunvx"]
+
+[ext_resource type="Script" path="res://Menus/bag_menu.gd" id="1_eeolx"]
+[ext_resource type="PackedScene" uid="uid://orllrhnecu74" path="res://Menus/equipment.tscn" id="2_uf8qc"]
+[ext_resource type="PackedScene" uid="uid://ge2necax0i78" path="res://Menus/inventory.tscn" id="3_1nlw7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjqc6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gopqe"]
+bg_color = Color(0.282353, 0.282353, 0.282353, 1)
+
+[node name="BagMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eeolx")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 1240.0
+offset_bottom = 680.0
+
+[node name="Panel" type="Panel" parent="PanelContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xjqc6")
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer/Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 1176.0
+offset_bottom = 600.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gopqe")
+
+[node name="Inventory" parent="PanelContainer/Panel/TabContainer" instance=ExtResource("3_1nlw7")]
+layout_mode = 2
+
+[node name="Equipment" parent="PanelContainer/Panel/TabContainer" instance=ExtResource("2_uf8qc")]
+visible = false
+layout_mode = 2
+
+[node name="Settings" type="TabBar" parent="PanelContainer/Panel/TabContainer"]
+visible = false
+layout_mode = 2

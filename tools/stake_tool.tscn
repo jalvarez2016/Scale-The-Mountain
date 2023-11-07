@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgqe1rhdd2kn2"]
+
+[ext_resource type="Script" path="res://tools/stake_tool.gd" id="1_ovps2"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7878h"]
+top_radius = 0.15
+bottom_radius = 0.04
+height = 0.5
+
+[node name="Stake_tool" type="Node3D"]
+script = ExtResource("1_ovps2")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_7878h")

@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://b13x3oph30ct"]
+
+[ext_resource type="Script" path="res://tools/tool_wheel.gd" id="1_toel5"]
+[ext_resource type="Texture2D" uid="uid://da8okyu0ka037" path="res://Icons/Transparant-Wheel.png" id="2_8gy7q"]
+[ext_resource type="PackedScene" uid="uid://b6b7dxnw5dtm3" path="res://tools/axe.tscn" id="3_aio8j"]
+[ext_resource type="PackedScene" uid="uid://dgqe1rhdd2kn2" path="res://tools/stake_tool.tscn" id="4_ik3b5"]
+
+[node name="ToolWheel" type="Node3D"]
+script = ExtResource("1_toel5")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Transparent-wheel" type="Sprite2D" parent="Control"]
+position = Vector2(641, 359)
+texture = ExtResource("2_8gy7q")
+
+[node name="Axe" type="Sprite2D" parent="Control/Transparent-wheel"]
+position = Vector2(0, -200)
+
+[node name="Area2D" type="Area2D" parent="Control/Transparent-wheel/Axe"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Control/Transparent-wheel/Axe/Area2D"]
+position = Vector2(0, 200)
+polygon = PackedVector2Array(-65, -111, 63, -111, 639, -359, -641, -359)
+
+[node name="Bow" type="Sprite2D" parent="Control/Transparent-wheel"]
+position = Vector2(-200, 0)
+
+[node name="Area2D" type="Area2D" parent="Control/Transparent-wheel/Bow"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Control/Transparent-wheel/Bow/Area2D"]
+position = Vector2(200, 0)
+polygon = PackedVector2Array(-65, -111, -65, 81, -641, 361, -641, -359)
+
+[node name="Lighter" type="Sprite2D" parent="Control/Transparent-wheel"]
+position = Vector2(0, 185)
+
+[node name="Area2D" type="Area2D" parent="Control/Transparent-wheel/Lighter"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Control/Transparent-wheel/Lighter/Area2D"]
+position = Vector2(0, -185)
+polygon = PackedVector2Array(-65, 81, 63, 81, 639, 361, -641, 361)
+
+[node name="Stake" type="Sprite2D" parent="Control/Transparent-wheel"]
+position = Vector2(200, 0)
+
+[node name="Area2D" type="Area2D" parent="Control/Transparent-wheel/Stake"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Control/Transparent-wheel/Stake/Area2D"]
+position = Vector2(-200, 0)
+polygon = PackedVector2Array(63, 81, 63, -111, 639, -359, 639, 361)
+
+[node name="Active_tool" type="Sprite2D" parent="Control/Transparent-wheel"]
+
+[node name="Tools" type="Node3D" parent="."]
+
+[node name="Axe" parent="Tools" instance=ExtResource("3_aio8j")]
+visible = false
+
+[node name="Stake_tool" parent="Tools" instance=ExtResource("4_ik3b5")]
+visible = false
+
+[connection signal="mouse_entered" from="Control/Transparent-wheel/Axe/Area2D" to="." method="_on_slot_1_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Transparent-wheel/Axe/Area2D" to="." method="_on_slot_1_mouse_exited"]
+[connection signal="mouse_entered" from="Control/Transparent-wheel/Stake/Area2D" to="." method="_on_slot_4_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Transparent-wheel/Stake/Area2D" to="." method="_on_slot_4_mouse_exited"]

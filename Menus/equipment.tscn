@@ -1,0 +1,92 @@
+[gd_scene load_steps=3 format=3 uid="uid://orllrhnecu74"]
+
+[ext_resource type="Script" path="res://Menus/equipment.gd" id="1_2amsa"]
+[ext_resource type="Texture2D" uid="uid://cngkbl1b2w5ig" path="res://Icons/EquipmentIcon.png" id="2_alx74"]
+
+[node name="Equipment" type="TabBar"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2amsa")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 576.0
+offset_bottom = 497.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/HBoxContainer/CenterContainer"]
+layout_mode = 2
+icon = ExtResource("2_alx74")
+flat = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/HBoxContainer/CenterContainer2"]
+layout_mode = 2
+icon = ExtResource("2_alx74")
+flat = true
+
+[node name="CenterContainer3" type="CenterContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/HBoxContainer/CenterContainer3"]
+layout_mode = 2
+icon = ExtResource("2_alx74")
+flat = true
+
+[node name="CenterContainer4" type="CenterContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/HBoxContainer/CenterContainer4"]
+layout_mode = 2
+icon = ExtResource("2_alx74")
+flat = true
+
+[node name="CenterContainer5" type="CenterContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/HBoxContainer/CenterContainer5"]
+layout_mode = 2
+icon = ExtResource("2_alx74")
+flat = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 369.0
+offset_right = 1120.0
+offset_bottom = 497.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = -56.0
+offset_right = 184.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "This is the description for the selected item"
